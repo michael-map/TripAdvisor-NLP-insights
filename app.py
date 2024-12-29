@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from utils import preprocessor
 
 from huggingface_hub import hf_hub_download
 import joblib
