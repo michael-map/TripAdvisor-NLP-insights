@@ -9,12 +9,9 @@ FILENAME = "random_forest_model.joblib"
 
 def run():
     """Loads the model from Hugging Face Hub."""
-    try:
-        model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
-        return joblib.load(model_path)
-    except Exception as e:
-        st.error(f"Error loading the model: {e}")
-        return None
+    
+    model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
+    model = joblib.load(model_path)
 
     st.title("Sentiment Analysis")
     st.text("Basic app to detect the sentiment of text. :)")
