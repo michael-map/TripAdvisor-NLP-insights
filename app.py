@@ -4,6 +4,8 @@ import pandas as pd
 from huggingface_hub import hf_hub_download
 import joblib
 
+from utils import Preprocessor
+
 REPO_ID = "michael-map/tripadvisor-nlp-rfc"
 FILENAME = "random_forest_model.joblib"
 
