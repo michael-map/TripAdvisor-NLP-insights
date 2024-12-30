@@ -2,4 +2,5 @@ huggingface-hub==0.17.3
 joblib
 scikit-learn
 spacy==3.7.2
+en-core-web-sm==3.7.0  # Add this line to download the spaCy model
 thinc>=8.2.2,<8.3.0
