@@ -2,7 +2,7 @@
 ---
 ## Problem Statement
 
-The data science team at TripAdvisor is interested to mine insights from hotel reviews on their platform. The reviews are diverse but most reviewers are optimistic about their hotel stay. There is a total of 20,491 reviews and about 73% rated their stay favorably, giving a rating score of 4 or 5.
+The data science team at TripAdvisor is interested to mine insights from hotel reviews on their platform. The reviews are diverse but most reviewers are optimistic about their hotel stay. There are a total of 20,491 reviews and about 73% rated their stay favorably, giving a rating score of 4 or 5.
 
 ## Methodology
 
