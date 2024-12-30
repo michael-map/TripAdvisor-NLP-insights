@@ -1,4 +1,4 @@
-# tripadvisor-nlp-insights
+# tripadvisor-nlp-insights for Mini Project 3 (2024)
 ---
 ## Problem Statement
 
