@@ -2,3 +2,4 @@ huggingface-hub==0.17.3
 joblib
 scikit-learn
 spacy==3.7.2
+thinc>=8.2.2,<8.3.0
