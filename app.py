@@ -69,8 +69,8 @@ def run():
             # Make prediction
             prediction, prediction_prob = predict_review(user_review)
             sentiment = "Positive" if prediction == 1 else "Negative"
-            prob_positive = round(prediction_prob[1] * 100, 2)
-            prob_negative = round(prediction_prob[0] * 100, 2)
+            prob_positive = round(prediction_prob[:, 1] * 100, 2)
+            prob_negative = round(prediction_prob[:, 0] * 100, 2)
     
             # Display Results
             st.markdown(f"### Sentiment: **{sentiment}**")
