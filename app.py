@@ -30,8 +30,6 @@ FILENAME = "random_forest_model.joblib"
 #         sentiment=f'Predicted sentiment of "{userinput}" is {output}.'
 #         st.success(sentiment)
 
-# if __name__ == "__main__":
-#     run()
 
 import streamlit as st
 import pandas as pd
@@ -46,43 +44,47 @@ def predict_review(review_text):
     # Predict sentiment
     model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
     model = joblib.load(model_path)
-    prediction = model.predict(review_features)[0]
-    prediction_prob = model.predict_proba(review_features)[0]
+    prediction = model.predict(pd.Series(review_features))[0]
+    prediction_prob = model.predict_proba(pd.Series(review_features))[0]
     return prediction, prediction_prob
 
-# Streamlit UI
-st.set_page_config(page_title="Hotel Review Sentiment Predictor", layout="centered")
+def run():
+    # Streamlit UI
+    st.set_page_config(page_title="Hotel Review Sentiment Predictor", layout="centered")
+    
+    # Header
+    st.title("Hotel Review Sentiment Predictor")
+    st.subheader("Analyze and predict the sentiment of hotel reviews.")
+    
+    # User Input
+    st.markdown("### Enter Your Review")
+    user_review = st.text_area(
+        "Type or paste a hotel review below to predict its sentiment.",
+        placeholder="The room was clean, and the service was excellent!",
+    )
+    
+    # Submit Button
+    if st.button("Predict Sentiment"):
+        if user_review.strip():
+            # Make prediction
+            prediction, prediction_prob = predict_review(user_review)
+            sentiment = "Positive" if prediction == 1 else "Negative"
+            prob_positive = round(prediction_prob[1] * 100, 2)
+            prob_negative = round(prediction_prob[0] * 100, 2)
+    
+            # Display Results
+            st.markdown(f"### Sentiment: **{sentiment}**")
+            st.markdown(f"**Confidence:** {prob_positive}% Positive, {prob_negative}% Negative")
+            st.info(
+                "Sentiment prediction is based on trained machine learning algorithms using advanced text processing techniques."
+            )
+        else:
+            st.error("Please enter a valid review before clicking 'Predict Sentiment'.")
+    
+    # Footer
+    st.markdown("---")
+    st.markdown("Developed with ❤️ using Streamlit | © 2024 Hotel Insights AI")
 
-# Header
-st.title("Hotel Review Sentiment Predictor")
-st.subheader("Analyze and predict the sentiment of hotel reviews.")
-
-# User Input
-st.markdown("### Enter Your Review")
-user_review = st.text_area(
-    "Type or paste a hotel review below to predict its sentiment.",
-    placeholder="The room was clean, and the service was excellent!",
-)
-
-# Submit Button
-if st.button("Predict Sentiment"):
-    if user_review.strip():
-        # Make prediction
-        prediction, prediction_prob = predict_review(user_review)
-        sentiment = "Positive" if prediction == 1 else "Negative"
-        prob_positive = round(prediction_prob[1] * 100, 2)
-        prob_negative = round(prediction_prob[0] * 100, 2)
-
-        # Display Results
-        st.markdown(f"### Sentiment: **{sentiment}**")
-        st.markdown(f"**Confidence:** {prob_positive}% Positive, {prob_negative}% Negative")
-        st.info(
-            "Sentiment prediction is based on trained machine learning algorithms using advanced text processing techniques."
-        )
-    else:
-        st.error("Please enter a valid review before clicking 'Predict Sentiment'.")
-
-# Footer
-st.markdown("---")
-st.markdown("Developed with ❤️ using Streamlit | © 2024 Hotel Insights AI")
+if __name__ == "__main__":
+    run()
 
