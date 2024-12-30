@@ -11,5 +11,9 @@ The reviews are ingested into a Pandas dataframe, and the review text column is 
 ## Application Deployment
 
 We used the lightweight option for deployment, so that our internal stakeholders can test the application.
-* HuggingFace for serving our RFC model - https://huggingface.co/michael-map/tripadvisor-nlp-rfc
-* Streamlit Application - https://tripadvisor-nlp-insights.streamlit.app/
+
+| Platform                                        | URL                                                    |
+|-------------------------------------------------|--------------------------------------------------------|
+| HuggingFace for serving our RFC model           | https://huggingface.co/michael-map/tripadvisor-nlp-rfc |
+| ----------------------------------------------- | --------------------------------------------------     |
+| Streamlit Application                           | https://tripadvisor-nlp-insights.streamlit.app/        |
