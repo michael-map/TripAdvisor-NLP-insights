@@ -15,5 +15,4 @@ We used the lightweight option for deployment, so that our internal stakeholders
 | Platform                                        | URL                                                    |
 |-------------------------------------------------|--------------------------------------------------------|
 | HuggingFace for serving our RFC model           | https://huggingface.co/michael-map/tripadvisor-nlp-rfc |
-| ----------------------------------------------- | --------------------------------------------------     |
 | Streamlit Application                           | https://tripadvisor-nlp-insights.streamlit.app/        |
