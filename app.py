@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.graph_objects as go
 
 from huggingface_hub import hf_hub_download
 import joblib
@@ -75,6 +76,25 @@ def run():
             # Display Results
             st.markdown(f"### Sentiment: **{sentiment}**")
             st.markdown(f"**Confidence:** {prob_positive}% Positive, {prob_negative}% Negative")
+            
+            # Plotly Bar Chart for Probabilities
+            fig = go.Figure(data=[
+                go.Bar(
+                    x=["Positive", "Negative"],
+                    y=[prob_positive, prob_negative],
+                    text=[f"{prob_positive}%", f"{prob_negative}%"],
+                    textposition='auto',
+                    marker=dict(color=['green', 'red'])
+                )
+            ])
+            fig.update_layout(
+                title="Prediction Probabilities",
+                xaxis_title="Sentiment",
+                yaxis_title="Probability (%)",
+                template="plotly_white"
+            )
+            st.plotly_chart(fig)
+            
             st.info(
                 "Sentiment prediction is based on trained machine learning algorithms using advanced text processing techniques."
             )
