@@ -39,13 +39,13 @@ import joblib
 
 # Helper function for prediction
 def predict_review(review_text):
-    # Transform input text using TF-IDF
-    review_features = vectorizer.transform([review_text])
+    
     # Predict sentiment
     model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
     model = joblib.load(model_path)
     prediction = model.predict(pd.Series(review_features))[0]
     prediction_prob = model.predict_proba(pd.Series(review_features))[0]
+    
     return prediction, prediction_prob
 
 def run():
