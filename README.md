@@ -1,4 +1,4 @@
-# tripadvisor-nlp-insights for Mini Project 3 (2024)
+# TripAdvisor-Natural Language Processing-insights for Mini Project 3 (I.O.D 2024)
 ---
 ## Problem Statement
 
